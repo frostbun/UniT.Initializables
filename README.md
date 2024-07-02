@@ -1,0 +1,1 @@
+# Initializable Manager for Unity
