@@ -4,6 +4,7 @@ namespace UniT.Initializables
     using System;
     using System.Linq;
     using UniT.Extensions;
+    using UnityEngine.Scripting;
     #if UNIT_UNITASK
     using System.Threading;
     using Cysharp.Threading.Tasks;
@@ -20,6 +21,7 @@ namespace UniT.Initializables
         private readonly ILateInitializable[]       lateInitializables;
         private readonly IAsyncLateInitializable[]  asyncLateInitializables;
 
+        [Preserve]
         public InitializableManager(
             IEarlyInitializable[]      earlyInitializables,
             IAsyncEarlyInitializable[] asyncEarlyInitializables,
