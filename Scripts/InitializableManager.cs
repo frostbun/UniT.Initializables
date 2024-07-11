@@ -71,19 +71,19 @@ namespace UniT.Initializables
             var subProgresses = progress.CreateSubProgresses(3).ToArray();
             this.earlyInitializables.ForEach(service => service.Initialize());
             yield return this.asyncEarlyInitializables.ForEachAsync(
-                (service, progress) => service.InitializeAsync(progress),
+                (service, progress) => service.InitializeAsync(progress: progress),
                 progress: subProgresses[0]
             );
             subProgresses[0]?.Report(1);
             this.initializables.ForEach(service => service.Initialize());
             yield return this.asyncInitializables.ForEachAsync(
-                (service, progress) => service.InitializeAsync(progress),
+                (service, progress) => service.InitializeAsync(progress: progress),
                 progress: subProgresses[1]
             );
             subProgresses[1]?.Report(1);
             this.lateInitializables.ForEach(service => service.Initialize());
             yield return this.asyncLateInitializables.ForEachAsync(
-                (service, progress) => service.InitializeAsync(progress),
+                (service, progress) => service.InitializeAsync(progress: progress),
                 progress: subProgresses[2]
             );
             subProgresses[2]?.Report(1);

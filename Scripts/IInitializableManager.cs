@@ -14,7 +14,7 @@ namespace UniT.Initializables
         #if UNIT_UNITASK
         public UniTask InitializeAsync(IProgress<float>? progress = null, CancellationToken cancellationToken = default);
         #else
-        public IEnumerator InitializeAsync(IProgress<float>? progress = null);
+        public IEnumerator InitializeAsync(Action? callback = null, IProgress<float>? progress = null);
         #endif
     }
 }

@@ -2,7 +2,7 @@
   "name": "com.frostbun.unit.initializables",
   "displayName": "UniT Initializables",
   "description": "Initializable Manager for Unity",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "unity": "2022.3",
   "license": "MIT",
   "author": {
