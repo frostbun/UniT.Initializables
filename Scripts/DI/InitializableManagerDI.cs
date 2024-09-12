@@ -1,10 +1,10 @@
 ﻿#if UNIT_DI
 #nullable enable
-namespace UniT.Initializables
+namespace UniT.Initializables.DI
 {
     using UniT.DI;
 
-    public static class DIBinder
+    public static class InitializableManagerDI
     {
         public static void AddInitializableManager(this DependencyContainer container)
         {
