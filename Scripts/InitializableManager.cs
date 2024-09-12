@@ -2,6 +2,7 @@
 namespace UniT.Initializables
 {
     using System;
+    using System.Collections.Generic;
     using System.Linq;
     using UniT.Extensions;
     using UnityEngine.Scripting;
@@ -14,29 +15,29 @@ namespace UniT.Initializables
 
     public sealed class InitializableManager : IInitializableManager
     {
-        private readonly IEarlyInitializable[]      earlyInitializables;
-        private readonly IAsyncEarlyInitializable[] asyncEarlyInitializables;
-        private readonly IInitializable[]           initializables;
-        private readonly IAsyncInitializable[]      asyncInitializables;
-        private readonly ILateInitializable[]       lateInitializables;
-        private readonly IAsyncLateInitializable[]  asyncLateInitializables;
+        private readonly IReadOnlyList<IEarlyInitializable>      earlyInitializables;
+        private readonly IReadOnlyList<IAsyncEarlyInitializable> asyncEarlyInitializables;
+        private readonly IReadOnlyList<IInitializable>           initializables;
+        private readonly IReadOnlyList<IAsyncInitializable>      asyncInitializables;
+        private readonly IReadOnlyList<ILateInitializable>       lateInitializables;
+        private readonly IReadOnlyList<IAsyncLateInitializable>  asyncLateInitializables;
 
         [Preserve]
         public InitializableManager(
-            IEarlyInitializable[]      earlyInitializables,
-            IAsyncEarlyInitializable[] asyncEarlyInitializables,
-            IInitializable[]           initializables,
-            IAsyncInitializable[]      asyncInitializables,
-            ILateInitializable[]       lateInitializables,
-            IAsyncLateInitializable[]  asyncLateInitializables
+            IEnumerable<IEarlyInitializable>      earlyInitializables,
+            IEnumerable<IAsyncEarlyInitializable> asyncEarlyInitializables,
+            IEnumerable<IInitializable>           initializables,
+            IEnumerable<IAsyncInitializable>      asyncInitializables,
+            IEnumerable<ILateInitializable>       lateInitializables,
+            IEnumerable<IAsyncLateInitializable>  asyncLateInitializables
         )
         {
-            this.earlyInitializables      = earlyInitializables;
-            this.asyncEarlyInitializables = asyncEarlyInitializables;
-            this.initializables           = initializables;
-            this.asyncInitializables      = asyncInitializables;
-            this.lateInitializables       = lateInitializables;
-            this.asyncLateInitializables  = asyncLateInitializables;
+            this.earlyInitializables      = earlyInitializables.ToArray();
+            this.asyncEarlyInitializables = asyncEarlyInitializables.ToArray();
+            this.initializables           = initializables.ToArray();
+            this.asyncInitializables      = asyncInitializables.ToArray();
+            this.lateInitializables       = lateInitializables.ToArray();
+            this.asyncLateInitializables  = asyncLateInitializables.ToArray();
         }
 
         #if UNIT_UNITASK
